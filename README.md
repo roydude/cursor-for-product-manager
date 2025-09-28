@@ -1,4 +1,5 @@
-# Cursor Project Docs Synapse Methodology: Cursor를 활용한 프로젝트 문서 관리 방법론
+# Cursor Project Docs Synapse Methodology:
+## Cursor를 활용한 프로젝트 문서 관리 방법론
 
 본 문서는 우리 프로젝트의 문서 관리 표준을 정의한다.
 PM/PO를 필두로 본 방법론을 숙지하고 운영함으로써 팀의 생산성을 높이고 소통 비용을 절감하는 것을 목표로 한다.
