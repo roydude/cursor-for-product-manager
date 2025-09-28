@@ -1,159 +1,72 @@
-# 🚀 Cursor for Product Managers 🤖
+# Cursor Project Docs Synapse Methodology: Cursor를 활용한 프로젝트 문서 관리 방법론
 
-Welcome to **Cursor for Product Managers**! This repository provides a comprehensive toolkit and framework designed to supercharge your product management workflow using Cursor as an AI-native PM copilot. Originally inspired by the [Maven course on AI-native PMs](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work), the [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main) structured workflow approach, and [Lee Robinson's YouTube video](https://www.youtube.com/watch?v=8QN23ZThdRY), this toolkit transforms Cursor from a coding tool into a powerful product thinking, strategic decision-making, and document creation platform.
+본 문서는 우리 프로젝트의 문서 관리 표준을 정의한다.
+PM/PO를 필두로 본 방법론을 숙지하고 운영함으로써 팀의 생산성을 높이고 소통 비용을 절감하는 것을 목표로 한다.
 
-Stop wrestling with fragmented product management tools and start building a unified, AI-powered PM workspace that grows smarter with every conversation!
+## 1. 핵심 철학
 
-## ✨ The Core Idea
+  - **정책 분리 원칙**: 서비스의 근간이 되는 '핵심 정책(Core Policy)'과 UI/UX와 직접 연관된 '화면 정책(Screen Policy)'을 분리하여 관리한다.
+  - **SSOT (Single Source of Truth) 원칙**: 정책의 성격에 따라 가장 적합한 위치를 '공식 데이터'로 지정한다. 핵심 정책의 SSOT는 Git (`docs/`)이며, 화면 정책의 SSOT는 **Figma**이다.
+  - **AI 소통 자산화**: 반복적인 AI 명령어(프롬프트)를 **`mdc/`** 폴더에 자산으로 축적하여 AI와의 상호작용을 표준화하고 효율을 극대화한다.
 
-Product management involves complex workflows across research, discovery, and delivery. This toolkit aims to bring structure, clarity, and AI-native efficiency to the process by:
+## 2. 폴더 구조 / 25-09-28 22:45 업데이트
 
-1. **Unified Context Management**: Centralizing all PM knowledge, frameworks, and insights in one AI-accessible workspace
-2. **Structured Discovery**: Leveraging proven frameworks like Continuous Discovery Habits for systematic user research
-3. **AI-Native Workflows**: Using Cursor's capabilities for document-centric work, selective context, and visual diffs
-4. **Iterative Improvement**: Building documents that grow smarter with every AI interaction
+프로젝트의 문서 및 AI 명령어는 다음 구조를 따른다.
 
-This approach helps ensure your AI copilot stays on track, makes it easier to manage complex product initiatives, and gives you confidence in AI-generated strategic content.
+```sh
+project-root/
+│
+├── docs/             # 서비스의 핵심 지식 베이스
+│   ├── README.md         # 문서 개요 및 가이드
+│   │
+│   ├── 01_product/
+│   │   ├── 01_overview.md       # 서비스 개요, MVP 범위, 목표
+│   │   ├── 02_ia.md             # 정보 구조 (IA), 전체 화면 목록
+│   │   ├── 03_core_policy.md    # [SSOT] 회원, 인증 등 핵심 백엔드 정책
+│   │   └── 04_screen_navigator.md   # [중요] Figma 화면 정책으로 가는 네비게이터
+│   │
+│   ├── 02_strategy/
+│   │   ├── 01_market_and_users.md  # 시장 분석, 타겟 고객 페르소나
+│   │   └── 02_marketing.md         # GTM 전략, 채널별 마케팅 계획
+│   │
+│   └── 03_history/
+│       ├── 01_decisions.md      # 주요 의사결정 로그 (ADR)
+│       └── meetings/            # 회의록 아카이브
+│
+└── mdc/              # AI(Cursor) 명령어 관리
+    ├── README.md             # mdc 폴더 사용법 안내
+    └── update_core_policy.mdc  # 핵심 정책 업데이트 명령어 템플릿
+```
 
-## 🗂️ Repository Structure
+## 3. 정책 관리 방식
 
-### Company Level Context (`company-level-context/`)
-- **Product Vision & Strategy** (`product-vision-and-strategy/`): 
-  - `product-strategy-review.mdc`: PRISM-aligned strategy review framework with auto-gate evidence readiness
-  - `product-vision-review.mdc`: Vision evaluation framework with 4-criteria scoring system
-- **OKRs** (`okrs/`): 
-  - `okr-sparring-partner.mdc`: Context-aware OKR coaching and sparring partner
-- **Team Structure** (`team-structure/`): 
-  - `README.md`: Team organization models, design principles, and re-org considerations
+### 3.1. 핵심 정책 (Core Policy)
 
-### Copilots (`copilots/`)
-- **PM Strategic Copilot** (`pm-strategic-copilot.mdc`): Preconfigured prompts and workflows for strategic assistance
+  - **관리 위치**: `docs/01_product/03_core_policy.md`
+  - **대상**: 회원, 인증, 보안, 결제 등 서비스의 근간이 되는 백엔드 중심의 정책.
+  - **특징**: 변경 주기가 길며, 특정 화면에 종속되지 않고 서비스 전반에 영향을 미친다.
 
-### Frameworks (`frameworks/`)
-- **Continuous Discovery Habits** (`continuous-discovery-habits/`):
-  - `create-interview-snapshots.mdc`
-  - `create-opportunities.mdc`
-  - `generate-solutions.mdc`
-  - `indentify-and-test-assumptions.mdc`
-  - `synthesize-interview-snapshots.mdc`
-- **Evidence-Guided** (`evidence-guided/`):
-  - `calculate-ice-score.mdc`
-- **Strategic Review** (in `company-level-context/product-vision-and-strategy/`):
-  - **PRISM Product Strategy Review**: 5-dimension framework (Problem, Reframe, Intentional Bets, Systemized Execution, Momentum) with auto-gate evidence readiness
-  - **Product Vision Review**: 4-criteria evaluation (Lofty & Inspiring, Realistic & Attainable, Constraint-Free, Grounded in User Problem)
+### 3.2. 화면 정책 (Screen Policy)
 
-### Guides (`guides/`)
-- **Meetings** (`meetings/`): `1-1s.mdc`
-- **Product** (`product/`): `create-prd.mdc`, `generate-tasks.mdc`, `process-task-list.mdc`
-- **Writing** (`writing/`): `writing.mdc`
+  - **관리 위치**: Figma
+  - **대상**: 입력 필드 유효성 검사, 컴포넌트 상태 변화, 에러 메시지 등 UI/UX와 직접 관련된 프론트엔드 중심의 정책.
+  - **특징**: 디자인 변경, 사용자 피드백 등으로 변경이 잦으며, 디자인이 곧 명세가 된다.
+  - **연결**: `docs/01_product/04_screen_navigator.md` 파일에 관련 Figma 링크를 명시하여 Git과 Figma를 연결한다.
 
-### Initiatives (`initiatives/`)
-- **Templates** (`_templates/`):
-  - `setup-new-initiative.mdc`
-  - `initiative-template/` with subfolders for `assumptions/`, `opportunities/`, `prd/`, `product-analytics/`, `solutions/`, `tasks/`, and `user-interviews/`
-- **Archive** (`archive/`): Archived initiatives (`README.md`)
+## 4. `mdc` 폴더 운영 가이드
 
-### Meeting Notes (`meeting-notes/`)
-- `1-1 notes/`, `leadership/`, `product-trio/`, `board-n-investor/`
+`mdc` 폴더는 AI(Cursor)와의 상호작용을 표준화하기 위한 명령어 템플릿을 관리한다.
 
-> Tip: When referencing files in Cursor, use the exact path names above.
+  - **목적**: 복잡한 프롬프트를 팀의 공동 자산으로 만들어 개발 생산성을 높이고 일관된 결과물을 도출한다.
+  - **사용법**:
+    1.  Cursor 채팅창에 `@mdc/파일명.mdc` 파일을 컨텍스트로 추가한다.
+    2.  템플릿 내의 변수(예: `[요구사항]`)를 구체적인 내용으로 채워 요청한다.
+    3.  AI가 생성한 결과를 검토하고 프로젝트에 반영한다.
 
-## 🧭 Quick Start
+## 5. 기대 효과
 
-1. Clone this repository to your local workspace
-2. In Cursor, use `@` to mention files (e.g., `@company-level-context/product-vision-and-strategy/product-strategy-review.mdc`)
-3. Start with strategic review frameworks:
-   - **Strategy Review**: `@company-level-context/product-vision-and-strategy/product-strategy-review.mdc`
-   - **Vision Evaluation**: `@company-level-context/product-vision-and-strategy/product-vision-review.mdc`
-   - **OKR Coaching**: `@company-level-context/okrs/okr-sparring-partner.mdc`
-4. Or begin with product development: `guides/product/create-prd.mdc` or `initiatives/_templates/setup-new-initiative.mdc`
+  - **명확성**: 모든 팀원이 정책의 위치와 내용을 명확하게 인지하여 혼선을 방지한다.
+  - **유지보수성**: 정책 변경 시 영향 범위를 최소화하고, 신속하고 정확한 업데이트가 가능해진다.
+  - **효율성**: AI를 활용한 문서 및 코드 업데이트를 자동화하여 개발 효율을 극대화한다.
 
-## 🚀 How to Use
-
-### 1️⃣ Setup Your AI-Native PM Workspace
-
-First, ensure you have Cursor installed and these framework files accessible:
-
-1. Clone or download this repository to your local workspace
-2. In Cursor's Agent chat, reference files with `@` (e.g., `@frameworks/continuous-discovery-habits/create-interview-snapshots.mdc`)
-3. Follow the structured workflows for different PM activities
-
-### 2️⃣ Leverage AI Dev Tasks Framework
-
-This toolkit integrates with the [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main) structured workflow for complex product initiatives:
-
-1. **Create PRDs**: Use AI to generate comprehensive Product Requirement Documents
-2. **Break Down Tasks**: Decompose PRDs into actionable, granular task lists
-3. **Iterative Implementation**: Guide AI through one task at a time with verification checkpoints
-4. **Progress Tracking**: Visual representation of completed tasks and next steps
-
-### 3️⃣ Document-Centric Workflow
-
-Instead of chat-based interactions, work directly in documents that grow smarter:
-
-- **Selective Context**: Provide only necessary information to AI for focused assistance
-- **Visual Diffs**: Clearly see AI-generated content changes and modifications
-- **Continuous Learning**: Documents improve with every AI interaction and iteration
-
-## 🔄 Common Workflows
-
-- **Create a PRD**: Start with `guides/product/create-prd.mdc`
-- **Generate and Process Tasks**: Use `guides/product/generate-tasks.mdc` and `guides/product/process-task-list.mdc`
-- **Run Continuous Discovery**: Follow `frameworks/continuous-discovery-habits/*`
-- **Score Ideas (ICE)**: Use `frameworks/evidence-guided/calculate-ice-score.mdc`
-- **Review Product Strategy**: Use `company-level-context/product-vision-and-strategy/product-strategy-review.mdc` with PRISM framework
-- **Evaluate Product Vision**: Use `company-level-context/product-vision-and-strategy/product-vision-review.mdc` with 4-criteria scoring
-- **Coach OKRs**: Use `company-level-context/okrs/okr-sparring-partner.mdc` for context-aware OKR development
-- **Design Team Structure**: Reference `company-level-context/team-structure/README.md` for organizational models
-- **Start a New Initiative**: Use `initiatives/_templates/setup-new-initiative.mdc` and the `initiative-template/` structure
-
-## 🌟 Key Benefits
-
-* **Structured PM Workflow**: Enforces clear processes from research to delivery
-* **AI-Native Efficiency**: Leverages Cursor's capabilities for PM-specific tasks
-* **Context Preservation**: Maintains product context across all AI interactions
-* **Framework Integration**: Built-in proven PM methodologies and frameworks
-* **Strategic Review System**: PRISM-aligned strategy evaluation with auto-gate evidence readiness
-* **Vision & OKR Coaching**: Systematic evaluation and coaching for vision clarity and goal setting
-* **Organizational Intelligence**: Team structure models and design principles for better alignment
-* **Iterative Improvement**: Documents and frameworks evolve with use
-* **Unified Knowledge Base**: Single source of truth for all PM activities
-
-## 🛠️ Framework Integration
-
-### Continuous Discovery Habits
-- **Interview Snapshots**: Structured templates for user research documentation
-- **Opportunity Mapping**: Systematic approach to identifying product opportunities
-- **Solution Generation**: AI-assisted ideation and solution development
-- **Synthesis**: Research insights consolidation and pattern recognition
-
-### Evidence-Guided Decision Making
-- Data-driven frameworks for strategic decisions
-- A/B testing templates and analysis tools
-- User behavior analysis frameworks
-- ROI calculation and measurement tools
-
-### Strategic Review & Evaluation
-- **PRISM Product Strategy Review**: Comprehensive 5-dimension evaluation framework (Problem Diagnosis, Reframe Opportunity, Intentional Bets, Systemized Execution, Momentum & Meta-Reflection) with auto-gate evidence readiness checks
-- **Product Vision Review**: 4-criteria vision evaluation system (Lofty & Inspiring, Realistic & Attainable, Constraint-Free, Grounded in User Problem) with 0-5 scoring
-- **OKR Sparring Partner**: Context-aware OKR coaching that considers organization size, industry, and maturity level for realistic, executable goal setting
-- **Team Structure Design**: Organizational models (Functional, Matrix, Value Stream, Divisional) with design principles and re-org considerations
-
-
-## 🔧 Cursor-Specific Features
-
-- **Document-Centric Work**: Work in documents rather than chats for better context retention
-- **Selective Context**: Choose what information to share with AI for focused assistance
-- **Visual Diffs**: Clearly see AI-generated changes and modifications
-- **From Instructions to Initiatives**: Build complete product initiatives step by step
-
-
-## 🙏 Acknowledgments
-
-- **[Cursor isn't just for coding: how AI-native PMs work](https://maven.com/p/0a96cb/cursor-isn-t-just-for-coding-how-ai-native-p-ms-work)** - Tal Raviv and Hilary Gridley's course on transforming Cursor into a PM AI copilot
-- **[AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks/tree/main)** - Structured workflow framework for AI-assisted development that inspired our PM workflow approach
-- **[Cursor AI Agents Work Like 10 Developers (Cursor VP Live Demo)](https://www.youtube.com/watch?v=8QN23ZThdRY)** - Lee Robinson demonstrates how Cursor AI agents automate developer tasks.
-
-- **[Continuous Discovery Habits](https://www.youtube.com/watch?v=9RFaz9ZBXpk)** - Teresa Torres' framework on continuous discovery
-- **[Evidence-Guided](https://www.youtube.com/watch?v=aJWSn-tz3jQ)** - Itamar Gilad's framework on evidence-guided product development
-
+E.o.D
