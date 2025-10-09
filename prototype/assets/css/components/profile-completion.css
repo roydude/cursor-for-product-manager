@@ -1,0 +1,136 @@
+/* 프로필 완성 페이지 스타일 */
+.incomplete-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.incomplete-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    border-left: 4px solid #f39c12;
+}
+
+.item-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.item-content p {
+    margin: 0 0 1rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* 완성도 표시 */
+.completion-steps {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.completion-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.completion-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 1;
+}
+
+.completion-step.completed:not(:last-child)::after {
+    background: #28a745;
+}
+
+.step-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #6c757d;
+    position: relative;
+    z-index: 2;
+}
+
+.completion-step.completed .step-icon {
+    background: #28a745;
+    color: #fff;
+}
+
+.step-title {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-align: center;
+}
+
+.completion-step.completed .step-title {
+    color: #28a745;
+    font-weight: 500;
+}
+
+/* 진행률 애니메이션 */
+@keyframes progressFill {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--progress-width);
+    }
+}
+
+.completion-fill {
+    animation: progressFill 1s ease-out;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .incomplete-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .completion-steps {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .completion-step:not(:last-child)::after {
+        display: none;
+    }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 완성 - 메디컬 잡다</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/components/profile-card.css">
+    <link rel="stylesheet" href="../assets/css/components/form-section.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">메디컬 잡다</h1>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">프로필</a>
+                <a href="#" class="nav-link">매칭설정</a>
+                <a href="#" class="nav-link">지원현황</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main">
+        <div class="container">
+            <!-- 페이지 타이틀 -->
+            <div class="page-header">
+                <h2 class="page-title">프로필 완성</h2>
+                <p class="page-subtitle">지원을 위해 프로필을 완성해주세요</p>
+            </div>
+
+            <!-- 프로필 완성도 -->
+            <div class="completion-card">
+                <div class="completion-header">
+                    <h3>프로필 완성도</h3>
+                    <span class="completion-percentage">60%</span>
+                </div>
+                <div class="completion-bar">
+                    <div class="completion-fill" style="width: 60%"></div>
+                </div>
+                <p class="completion-text">아래 항목들을 완성하면 지원이 가능합니다.</p>
+            </div>
+
+            <!-- 미완성 항목 목록 -->
+            <section class="profile-section">
+                <h3 class="section-title">완성해야 할 항목</h3>
+                <div class="incomplete-items">
+                    <div class="incomplete-item">
+                        <div class="item-icon">⚠️</div>
+                        <div class="item-content">
+                            <h4>간호사 면허번호</h4>
+                            <p>면허번호를 입력해주세요</p>
+                            <button class="btn btn-primary btn-sm" onclick="scrollToField('license')">입력하기</button>
+                        </div>
+                    </div>
+                    
+                    <div class="incomplete-item">
+                        <div class="item-icon">⚠️</div>
+                        <div class="item-content">
+                            <h4>희망 근무 조건</h4>
+                            <p>희망 지역과 진료과를 설정해주세요</p>
+                            <button class="btn btn-primary btn-sm" onclick="scrollToField('preferred-region')">설정하기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 빠른 입력 폼 -->
+            <section class="profile-section">
+                <h3 class="section-title">빠른 입력</h3>
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="license" class="required">간호사 면허번호</label>
+                        <input type="text" id="license" name="license" placeholder="예: 2024-001234" required>
+                        <div class="form-message info">면허번호는 2024-001234 형식으로 입력해주세요</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="license-date" class="required">면허 취득일</label>
+                        <input type="date" id="license-date" name="license-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferred-region" class="required">희망 지역</label>
+                        <select id="preferred-region" name="preferred-region" multiple required>
+                            <option value="seoul">서울</option>
+                            <option value="gyeonggi">경기</option>
+                            <option value="busan">부산</option>
+                            <option value="daegu">대구</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferred-department" class="required">희망 진료과</label>
+                        <select id="preferred-department" name="preferred-department" multiple required>
+                            <option value="icu">ICU</option>
+                            <option value="emergency">응급실</option>
+                            <option value="surgery">외과</option>
+                            <option value="internal">내과</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 액션 버튼 -->
+            <div class="action-buttons">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">뒤로가기</button>
+                <button type="button" class="btn btn-primary" onclick="completeProfile()">완성하기</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 메디컬 잡다. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function scrollToField(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                field.focus();
+            }
+        }
+
+        function completeProfile() {
+            const requiredFields = document.querySelectorAll('input[required], select[required]');
+            let allValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allValid = false;
+                    field.style.borderColor = '#dc3545';
+                } else {
+                    field.style.borderColor = '#28a745';
+                }
+            });
+
+            if (allValid) {
+                alert('프로필이 완성되었습니다! 이제 지원이 가능합니다.');
+                // 실제 구현에서는 원래 페이지로 리다이렉트
+                window.location.href = '../index.html';
+            } else {
+                alert('필수 항목을 모두 입력해주세요.');
+            }
+        }
+    </script>
+</body>
+</html>

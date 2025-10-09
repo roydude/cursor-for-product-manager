@@ -25,10 +25,18 @@ project-root/
 │   ├── README.md         # 문서 개요 및 가이드
 │   │
 │   ├── 01_product/
-│   │   ├── 01_overview.md       # 서비스 개요, MVP 범위, 목표
+│   │   ├── 01_service_overview.md   # 서비스 개요, MVP 범위, 목표
 │   │   ├── 02_ia.md             # 정보 구조 (IA), 전체 화면 목록
 │   │   ├── 03_core_policy.md    # [SSOT] 회원, 인증 등 핵심 백엔드 정책
-│   │   └── 04_screen_navigator.md   # [중요] Figma 화면 정책으로 가는 네비게이터
+│   │   ├── 04_screen_navigator.md   # [중요] Figma 화면 정책으로 가는 네비게이터
+│   │   ├── 05_prd/              # 제품 요구사항 문서 (PRD)
+│   │   │   ├── README.md         # PRD 폴더 가이드
+│   │   │   └── *.md             # 각 기능별 PRD 문서
+│   │   └── 06_research/          # 리서치 자료
+│   │       ├── README.md         # 리서치 폴더 가이드
+│   │       ├── user_research/    # 사용자 리서치
+│   │       ├── market_research/  # 시장 조사
+│   │       └── usability_research/ # 사용성 연구
 │   │
 │   ├── 02_strategy/
 │   │   ├── 01_market_and_users.md  # 시장 분석, 타겟 고객 페르소나
@@ -38,10 +46,26 @@ project-root/
 │       ├── 01_decisions.md      # 주요 의사결정 로그 (ADR)
 │       └── meetings/            # 회의록 아카이브
 │
-└── mdc/              # AI(Cursor) 명령어 관리
-    ├── README.md             # mdc 폴더 사용법 안내
-    ├── update_core_policy.mdc # 핵심 정책 업데이트 명령어 템플릿
-    └── {필요에 따라 추가된}.mdc    # 필요에 따라 추가된 mdc 파일
+├── mdc/                        # AI(Cursor) 명령어 관리
+│   ├── README.md               # mdc 폴더 사용법 안내
+│   ├── update_core_policy.mdc  # 핵심 정책 업데이트 명령어 템플릿
+│   ├── generate_prd.mdc        # 핵심 정책 업데이트 명령어 템플릿
+│   └── {필요에 따라 추가된}.mdc   # 필요에 따라 추가된 mdc 파일
+│
+└── prototype/                  # 인터랙티브 프로토타입
+    ├── README.md               # 프로토타입 사용 가이드
+    ├── index.html              # 메인 프로필 관리 페이지
+    ├── assets/                 # 정적 리소스
+    │   ├── css/                # 스타일시트
+    │   │   ├── main.css        # 메인 스타일
+    │   │   ├── components/     # 컴포넌트별 CSS
+    │   │   └── responsive.css   # 반응형 스타일
+    │   ├── js/                 # JavaScript
+    │   │   └── main.js         # 메인 로직
+    │   └── images/             # 이미지 리소스
+    └── pages/                  # 추가 페이지들
+        ├── matching-settings.html    # 매칭 설정 페이지
+        └── profile-completion.html  # 프로필 완성 페이지
 ```
 
 <br>
@@ -60,6 +84,13 @@ project-root/
 - **대상**: 입력 필드 유효성 검사, 컴포넌트 상태 변화, 에러 메시지 등 UI/UX와 직접 관련된 프론트엔드 중심의 정책.
 - **특징**: 디자인 변경, 사용자 피드백 등으로 변경이 잦으며, 디자인이 곧 명세가 된다.
 - **연결**: `docs/01_product/04_screen_navigator.md` 파일에 관련 Figma 링크를 명시하여 Git과 Figma를 연결한다.
+
+### 3.3. 프로토타입 (Interactive Prototype)
+
+- **관리 위치**: `prototype/`
+- **대상**: PRD 문서를 바탕으로 구현된 인터랙티브 프로토타입으로, 사용자 경험 검증 및 개발팀과의 소통 도구.
+- **특징**: 정적 HTML/CSS/JavaScript 기반으로 빌드 과정 없이 즉시 실행 가능하며, Git 관리가 간편하다.
+- **연결**: `docs/01_product/05_prd/`의 PRD 문서와 직접 연결되어 요구사항을 시각적으로 구현한다.
 
 <br>
 
@@ -141,6 +172,33 @@ project-root/
    - `docs/01_product/02_ia.md`에 화면 구조 업데이트
    - `docs/02_strategy/01_market_and_users.md`에 사용자 니즈 반영
 
+#### 시나리오: 프로토타입 기반 기능 검증
+
+**상황**: PRD 문서를 바탕으로 한 프로필 관리 기능의 프로토타입 제작
+
+**PM의 역할**:
+
+1. **프로토타입 제작 및 문서화**
+
+   ```
+   @mdc/generate_prd.mdc
+   [기능명]: MJ 프로필 관리 페이지
+   [PRD 문서]: docs/01_product/05_prd/MJ 프로필 관리 페이지 PRD_251009.md
+   [프로토타입]: prototype/index.html
+   [목표]: 사용자 경험 검증 및 개발팀과의 소통 도구
+   ```
+
+2. **팀원들과의 협업**
+
+   - **개발자**: 프로토타입 검토 및 기술적 구현 방안 논의
+   - **디자이너**: UI/UX 피드백 및 디자인 시스템 일관성 검토
+   - **QA**: 사용자 시나리오 테스트 및 버그 리포트
+
+3. **프로토타입 관리**
+   - `prototype/README.md`에 사용 가이드 작성
+   - `docs/01_product/05_prd/`의 PRD 문서와 연결
+   - 사용자 피드백을 바탕으로 프로토타입 개선
+
 ### 6.3. 전략 수립 시 협업 프로세스
 
 #### 시나리오: 분기별 제품 전략 검토
@@ -201,6 +259,7 @@ project-root/
 - **핵심 정책**: `docs/01_product/03_core_policy.md`가 핵심 데이터 소스
 - **화면 정책**: Figma가 UI/UX 정책의 핵심 데이터 소스
 - **전략 문서**: `docs/02_strategy/`가 비즈니스 전략의 핵심 데이터 소스
+- **프로토타입**: `prototype/`이 인터랙티브 시연 및 사용자 경험 검증의 핵심 데이터 소스
 
 #### 6.5.2. AI 소통 자산화
 

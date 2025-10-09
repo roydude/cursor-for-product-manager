@@ -1,7 +1,3 @@
----
-name: 'mdc' 폴더에 대한 설명과 관리 방법 
-alwaysApply: false
----
 # AI 명령어 관리 (MDC)
 
 Cursor AI와의 상호작용을 표준화하기 위한 명령어 템플릿을 관리한다.
