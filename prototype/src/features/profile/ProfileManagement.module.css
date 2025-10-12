@@ -1,0 +1,55 @@
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.pageSubtitle {
+  font-size: 1rem;
+  color: #6B7280;
+  margin: 0;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.placeholder {
+  padding: 3rem;
+  text-align: center;
+  background-color: #F9FAFB;
+  border: 2px dashed #D1D5DB;
+  border-radius: var(--radius-lg);
+  color: #6B7280;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 2rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+
+  .actionButtons {
+    flex-direction: column-reverse;
+  }
+
+  .actionButtons button {
+    width: 100%;
+  }
+}
+

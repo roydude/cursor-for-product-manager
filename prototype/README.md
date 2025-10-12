@@ -1,221 +1,328 @@
-# MJ 프로필 관리 페이지 프로토타입
+# 메디컬 잡다 프로토타입 (React)
 
-## 개요
-메디컬 잡다 간호사 프로필 관리 페이지의 인터랙티브 프로토타입입니다. PRD 문서의 요구사항을 바탕으로 구현된 정적 HTML/CSS/JavaScript 기반 프로토타입입니다.
+메디컬 잡다 간호사 프로필 관리 페이지의 React 기반 프로토타입입니다.
 
-## 구조
+## 🎯 프로젝트 개요
+
+이 프로토타입은 **Vite + React + TypeScript**를 사용하여 구축되었으며, Claude Sonnet 4.5가 효율적으로 작업할 수 있도록 설계되었습니다.
+
+### 핵심 기술 스택
+
+- **React 18.3** - UI 라이브러리
+- **TypeScript 5.6** - 타입 안정성
+- **Vite 5.4** - 빌드 도구 (빠른 HMR)
+- **CSS Modules** - 스타일링
+- **React Router 6** - 라우팅
+
+## 📁 프로젝트 구조
+
 ```
 prototype/
-├── index.html                          # 기존 메인 페이지 (샘플)
-├── assets/
-│   ├── css/
-│   │   ├── main.css                     # 메인 스타일
-│   │   ├── components/                  # 컴포넌트별 CSS
-│   │   │   ├── profile-card.css         # 프로필 카드 컴포넌트
-│   │   │   ├── form-section.css         # 폼 섹션 컴포넌트
-│   │   │   ├── matching-toggle.css      # 매칭 토글 컴포넌트
-│   │   │   └── profile-completion.css   # 프로필 완성 컴포넌트
-│   │   └── responsive.css               # 반응형 스타일
-│   ├── js/
-│   │   ├── main.js                      # 메인 JavaScript 로직
-│   │   └── profile-management.js        # 프로필 관리 전용 로직
-│   └── images/                          # 이미지 리소스
-│       └── default-avatar.png           # 기본 아바타 이미지
-└── pages/                               # 추가 페이지들
-    ├── profile-management.html          # ⭐ 메인 프로필 관리 페이지 (신규)
-    ├── matching-settings.html            # 매칭 설정 페이지
-    └── profile-completion.html          # 프로필 완성 페이지
+├── src/
+│   ├── components/              # 재사용 가능한 공통 컴포넌트
+│   │   ├── common/
+│   │   │   ├── Button.tsx       # 버튼 컴포넌트
+│   │   │   ├── Input.tsx        # 입력 필드 컴포넌트
+│   │   │   ├── Card.tsx         # 카드 컴포넌트
+│   │   │   └── Toggle.tsx       # 토글 스위치
+│   │   └── layout/
+│   │       ├── Header.tsx       # 헤더
+│   │       ├── Footer.tsx       # 푸터
+│   │       └── PageLayout.tsx   # 페이지 레이아웃
+│   │
+│   ├── features/                # 기능별 모듈 (Feature-based)
+│   │   └── profile/
+│   │       ├── components/      # 프로필 전용 컴포넌트
+│   │       │   ├── BasicInfo.tsx
+│   │       │   ├── ProfileCompletion.tsx
+│   │       │   └── ... (추가 구현 예정)
+│   │       ├── types/
+│   │       │   └── profile.types.ts  # TypeScript 타입 정의
+│   │       └── ProfileManagement.tsx # 메인 프로필 페이지
+│   │
+│   ├── pages/                   # 페이지 컴포넌트
+│   │   └── ProfilePage.tsx
+│   │
+│   ├── styles/                  # 글로벌 스타일
+│   │   ├── theme.ts             # 디자인 시스템
+│   │   └── global.css           # 글로벌 CSS
+│   │
+│   ├── App.tsx                  # 메인 앱 컴포넌트
+│   └── main.tsx                 # 엔트리 포인트
+│
+├── public/                      # 정적 파일
+├── index.html                   # HTML 템플릿
+├── package.json                 # 의존성 관리
+├── tsconfig.json                # TypeScript 설정
+├── vite.config.ts               # Vite 설정
+└── README.md                    # 프로젝트 문서
 ```
 
-## 실행 방법
+## 🚀 시작하기
 
-### 방법 1: 직접 실행
-1. `index.html` 파일을 브라우저에서 직접 열기
-2. 모든 기능이 정상적으로 작동합니다
+### 1. 의존성 설치
 
-### 방법 2: 로컬 서버 실행
 ```bash
-# Python 3
-python -m http.server 8000
-
-# Python 2
-python -m SimpleHTTPServer 8000
-
-# Node.js (http-server 설치 필요)
-npx http-server
+npm install
 ```
 
-## 주요 기능
+### 2. 개발 서버 실행
 
-### ⭐ 신규: 프로필 관리 페이지 (`pages/profile-management.html`)
-메디컬 잡다 간호사 회원을 위한 완전한 프로필 관리 페이지입니다.
+```bash
+npm run dev
+```
 
-#### 1. 기본 정보 관리
-- **프로필 사진**: 업로드 및 미리보기 기능
-- **기본 정보**: 이름, 생년월일, 이메일, 휴대전화번호
-- **본인인증**: 인증 상태 표시
+브라우저에서 자동으로 `http://localhost:3000`이 열립니다.
 
-#### 2. 셀프 브랜딩
-- **한 줄 소개**: 간단한 자기소개 (50자 이내)
-- **간단 소개글**: 상세한 자기소개 작성
+### 3. 빌드
 
-#### 3. 학력 정보
-- **다중 학력 관리**: 학력 추가/삭제 기능
-- **상세 정보**: 학교 구분, 학교명, 상태, 재학기간, 전공, 학점
-- **부전공/복수전공**: 추가 전공 정보 입력 가능
+```bash
+npm run build
+```
 
-#### 4. 경력 정보
-- **다중 경력 관리**: 경력 추가/삭제 기능
-- **일반 경력**: 직장명, 상태, 근무기간, 직군/직무, 계약형태
-- **의료기관 특화**: 병원 등급, 진료과 경험, 야간/주말 근무 경험
-- **스마트 UI**: "의료기관 경력입니다" 체크 시 추가 필드 표시
+빌드된 파일은 `dist/` 폴더에 생성됩니다.
 
-#### 5. 간호사 면허 정보
-- **면허번호**: 실시간 유효성 검증
-- **면허 취득일**: 날짜 입력
-- **면허 상태**: 정상/정지/취소
-- **승인 여부**: 관리자 승인 대기/승인/반려
+### 4. 프리뷰
 
-#### 6. 임상 경험
-- **근무 연수**: 총 임상 경력
-- **담당 환자 수**: 평균 담당 환자 수
-- **특수 경험**: 수술실, 응급실, ICU, NICU, PICU 등
-- **업무 성과**: 주요 성과 및 경험 작성
+```bash
+npm run preview
+```
 
-#### 7. 간호교육 이수
-- **다중 교육 관리**: 교육 추가/삭제 기능
-- **연수 과정**: 과정명, 이수 기관, 이수 기간, 이수 시간
-- **수료증 업로드**: 파일 업로드 기능
+빌드된 프로젝트를 미리 볼 수 있습니다.
 
-#### 8. 의료진 특화 자격증
-- **기본 자격증**: BLS, ACLS, PALS, KLS (체크박스)
-- **기타 의료 자격증**: 당뇨교육사, 감염관리사 등
-- **일반 자격증**: 컴활, TOEIC 등
+## 🎨 디자인 시스템
 
-#### 9. 희망 근무 조건
-- **희망 진료과**: 다중 선택 가능
-- **희망 병원 규모**: 상급종합병원, 종합병원, 병원, 의원
-- **희망 근무 형태**: 정규직, 계약직, 임시직, 프리랜서
-- **희망 근무 시간**: 주간, 야간, 교대근무, 유연근무
-- **희망 지역**: 다중 선택 가능
-- **근무 가능 조건**: 야간/주말/휴일/출장 가능 여부
+### 메디컬 잡다 브랜드 컬러
 
-#### 10. 매칭 설정
-- **ON/OFF 토글**: 직관적인 스위치 UI
-- **알림 설정**: 푸시, SMS 알림 옵션 (이메일 알림 제외)
+```typescript
+colors = {
+  primary: "#00C4B4", // 메디컬 틸
+  secondary: "#FF6B9D", // 핑크
+  success: "#10B981",
+  warning: "#F59E0B",
+  danger: "#EF4444",
+};
+```
 
-### 11. 프로필 완성도
-- **실시간 계산**: 입력된 정보 기반 완성도 자동 계산
-- **시각적 표시**: 프로그레스 바와 퍼센트
-- **미완성 항목 안내**: 완성해야 할 항목 목록 표시
-- **가이드 제공**: 각 항목별 입력 도움말
+디자인 시스템은 `src/styles/theme.ts`에 정의되어 있습니다.
 
-### 12. 섹션 네비게이션
-- **빠른 이동**: 클릭으로 원하는 섹션으로 스크롤
-- **활성 상태 표시**: 현재 보고 있는 섹션 하이라이트
-- **모바일 최적화**: 터치 스크롤 지원
+## 📦 컴포넌트 라이브러리
 
-### 13. 동적 필드 관리
-- **학력/경력/교육 추가**: 버튼 클릭으로 필드 추가
-- **삭제 기능**: 각 카드별 삭제 버튼
-- **의료기관 특화 필드**: 조건부 필드 표시
+### 공통 컴포넌트
 
-### 14. 반응형 디자인
-- **모바일 최적화**: 터치 친화적 인터페이스
-- **데스크톱 지원**: 넓은 화면에서의 최적화
-- **다크 모드**: 시스템 설정에 따른 자동 적용
+#### Button
 
-### 15. 사용자 경험 (UX) 특징
-- **실시간 검증**: 입력 시 즉시 유효성 검사
-- **스무스 스크롤**: 부드러운 섹션 이동
-- **시각적 피드백**: 입력 상태에 따른 색상 변화
-- **접근성 개선**: 시맨틱 HTML 및 키보드 네비게이션
+```tsx
+import Button from "@components/common/Button";
 
-## PRD 요구사항 구현 현황
+<Button variant="primary" size="md" onClick={handleClick}>
+  클릭
+</Button>;
+```
 
-| 기능 | 구현 상태 | 설명 |
-|------|-----------|------|
-| F-01: 프로필 정보 관리 | ✅ 완료 | 모든 프로필 정보 섹션 구현 |
-| F-02: 매칭 설정 관리 | ✅ 완료 | ON/OFF 토글 및 세부 조건 설정 |
-| F-03: 프로필 완성도 표시 | ✅ 완료 | 실시간 완성도 계산 및 표시 |
-| F-04: 반응형 디자인 | ✅ 완료 | 모바일/데스크톱 최적화 |
-| F-05: 데이터 검증 및 보안 | ✅ 완료 | 클라이언트 사이드 검증 |
+**Props:**
 
-## 기술 스택
+- `variant`: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
+- `size`: 'sm' | 'md' | 'lg'
+- `fullWidth`: boolean
+- `loading`: boolean
 
-- **HTML5**: 시맨틱 마크업
-- **CSS3**: Flexbox, Grid, 애니메이션
-- **Vanilla JavaScript**: ES6+ 모듈 시스템
-- **반응형 디자인**: Mobile-first 접근법
+#### Input
 
-## 브라우저 지원
+```tsx
+import Input from "@components/common/Input";
 
-- **Chrome**: 80+ (권장)
-- **Firefox**: 75+
-- **Safari**: 13+
-- **Edge**: 80+
+<Input
+  label="이름"
+  value={name}
+  onChange={handleChange}
+  required
+  fullWidth
+  error="에러 메시지"
+/>;
+```
 
-## 사용자 시나리오 테스트
+#### Card
 
-### ⭐ 시나리오 1: 신규 간호사 프로필 완성 (메인 시나리오)
-1. `pages/profile-management.html` 접속
-2. 프로필 완성도 확인 (75%)
-3. 기본 정보 및 프로필 사진 업로드
-4. 학력 정보 입력
-5. 간호사 면허 정보 입력
-6. 희망 근무 조건 설정
-7. 매칭 설정 활성화
-8. 프로필 저장 (완성도 100%)
+```tsx
+import Card from "@components/common/Card";
 
-### 시나리오 2: 경력 간호사 프로필 업데이트
-1. `pages/profile-management.html` 접속
-2. 경력 정보 섹션으로 이동
-3. "경력 추가" 버튼 클릭
-4. "의료기관 경력입니다" 체크
-5. 병원 등급, 진료과 경험 입력
-6. 임상 경험 섹션에서 특수 경험 입력
-7. 간호교육 이수 내역 추가
-8. 변경사항 저장
+<Card padding="md" shadow="base">
+  컨텐츠
+</Card>;
+```
 
-### 시나리오 3: 매칭 설정 조정
-1. `pages/profile-management.html` 접속
-2. 섹션 네비게이션에서 "매칭 설정" 클릭
-3. 매칭 ON/OFF 토글
-4. 희망 근무 조건 섹션으로 이동하여 조건 수정
-5. 알림 설정 변경
-6. 설정 저장
+#### Toggle
 
-### 시나리오 4: 모바일에서 빠른 수정
-1. 모바일에서 `pages/profile-management.html` 접속
-2. 상단 섹션 네비게이션 좌우 스크롤
-3. 원하는 섹션으로 빠르게 이동
-4. 터치 친화적 입력 폼 사용
-5. 변경사항 저장
+```tsx
+import Toggle from "@components/common/Toggle";
 
-## 디자인 시스템
+<Toggle checked={isEnabled} onChange={setIsEnabled} label="매칭 활성화" />;
+```
 
-### 메디컬 잡다 색상 팔레트
-- **Primary**: #00C4B4 (메디컬 틸)
-- **Primary Hover**: #00A89A
-- **Secondary**: #FF6B9D (핑크)
-- **Success**: #10B981 (초록색)
-- **Warning**: #F59E0B (주황색)
-- **Danger**: #EF4444 (빨간색)
-- **Gray Scale**: #F9FAFB ~ #1F2937
+## 📝 TypeScript 타입 정의
 
-### 타이포그래피
-- **Font Family**: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
-- **Font Sizes**: 0.8rem ~ 2rem
-- **Font Weights**: 400, 500, 600, 700
+모든 프로필 관련 타입은 `src/features/profile/types/profile.types.ts`에 정의되어 있습니다.
 
-## 향후 개선 사항
+```typescript
+import type {
+  Profile,
+  BasicInfo,
+  Education,
+} from "@features/profile/types/profile.types";
+```
 
-1. **백엔드 연동**: 실제 API 연동
-2. **이미지 업로드**: 프로필 사진 업로드 기능
-3. **데이터 저장**: 로컬 스토리지 활용
-4. **접근성 개선**: ARIA 라벨 및 키보드 네비게이션
-5. **성능 최적화**: 이미지 최적화 및 번들링
+### 주요 타입
 
-## 문의사항
+- `Profile` - 전체 프로필
+- `BasicInfo` - 기본 정보
+- `Education` - 학력 정보
+- `Experience` - 경력 정보
+- `NurseLicense` - 간호사 면허
+- `ClinicalExperience` - 임상 경험
+- `WorkPreferences` - 희망 근무 조건
+- `MatchingSettings` - 매칭 설정
 
-프로토타입 관련 문의사항이 있으시면 개발팀에 연락해주세요.
+## 🔧 Path Alias 설정
+
+TypeScript와 Vite에서 Path Alias가 설정되어 있습니다:
+
+```typescript
+import Button from "@components/common/Button";
+import { Profile } from "@features/profile/types/profile.types";
+import ProfilePage from "@pages/ProfilePage";
+import theme from "@styles/theme";
+```
+
+## 🌟 개발 가이드
+
+### 새로운 컴포넌트 추가
+
+1. **공통 컴포넌트**: `src/components/common/`에 추가
+2. **기능별 컴포넌트**: `src/features/{feature}/components/`에 추가
+3. **CSS Modules 사용**: `ComponentName.module.css` 형식
+
+### 컴포넌트 작성 패턴
+
+```tsx
+import React from "react";
+import styles from "./MyComponent.module.css";
+
+export interface MyComponentProps {
+  title: string;
+  onClick?: () => void;
+}
+
+const MyComponent: React.FC<MyComponentProps> = ({ title, onClick }) => {
+  return (
+    <div className={styles.container}>
+      <h2>{title}</h2>
+      {onClick && <button onClick={onClick}>클릭</button>}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+### 상태 관리
+
+현재는 `useState`를 사용한 로컬 상태 관리를 사용합니다.
+추후 필요시 Context API 또는 상태 관리 라이브러리 추가 가능.
+
+## 🔄 다음 단계 (구현 예정)
+
+### 추가 구현이 필요한 프로필 섹션
+
+- [ ] 셀프 브랜딩 (SelfBranding.tsx)
+- [ ] 학력 정보 (Education.tsx)
+- [ ] 경력 정보 (Experience.tsx)
+- [ ] 간호사 면허 (NurseLicense.tsx)
+- [ ] 임상 경험 (ClinicalExperience.tsx)
+- [ ] 간호교육 이수 (NursingEducation.tsx)
+- [ ] 자격증 (Certifications.tsx)
+- [ ] 희망 근무 조건 (WorkPreferences.tsx)
+- [ ] 매칭 설정 (MatchingSettings.tsx)
+- [ ] 섹션 네비게이션 (SectionNavigation.tsx)
+
+### 기능 개선
+
+- [ ] 커스텀 훅 구현 (useProfile, useProfileCompletion)
+- [ ] 유틸리티 함수 (validation.ts, completion.ts)
+- [ ] API 연동 준비
+- [ ] 폼 검증 강화
+- [ ] 에러 핸들링
+- [ ] 로딩 상태 관리
+
+## 🎓 Claude Sonnet 4.5 활용 팁
+
+이 프로젝트는 Claude가 효율적으로 작업할 수 있도록 설계되었습니다:
+
+1. **명확한 타입 정의**: TypeScript로 모든 데이터 구조 정의
+2. **컴포넌트 분리**: 단일 책임 원칙에 따라 작은 컴포넌트로 분리
+3. **Feature-based 구조**: 도메인 중심으로 코드 구성
+4. **일관된 네이밍**: 파일명, 변수명 일관성 유지
+5. **CSS Modules**: 스타일 충돌 방지
+
+### Claude에게 작업 요청하는 방법
+
+✅ **좋은 예:**
+
+```
+"BasicInfo 컴포넌트를 참고해서 Education 컴포넌트를 만들어줘.
+학력 정보를 추가/삭제할 수 있어야 하고, profile.types.ts의 Education 타입을 사용해."
+```
+
+❌ **나쁜 예:**
+
+```
+"학력 폼 만들어줘"
+```
+
+## 📱 반응형 디자인
+
+모바일 우선(Mobile-first) 접근 방식을 사용합니다.
+
+```css
+/* 모바일 기본 스타일 */
+.container {
+  padding: 1rem;
+}
+
+/* 태블릿 이상 */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem;
+  }
+}
+```
+
+## 🧪 테스트
+
+현재는 테스트가 구현되지 않았습니다. 추후 추가 예정:
+
+- Vitest (단위 테스트)
+- React Testing Library (컴포넌트 테스트)
+
+## 📄 라이선스
+
+이 프로젝트는 메디컬 잡다 내부 프로토타입용입니다.
+
+## 📞 문의
+
+- **PRD 관련**: 제품팀
+- **개발 관련**: 개발팀
+- **디자인 관련**: 디자인팀
+
+---
+
+**마지막 업데이트**: 2024-10-12  
+**버전**: 1.0.0  
+**상태**: 기본 구조 완성, 추가 컴포넌트 구현 예정

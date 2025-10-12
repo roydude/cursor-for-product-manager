@@ -1,0 +1,119 @@
+.container {
+  display: inline-block;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: relative;
+  display: inline-block;
+  background-color: #d1d5db;
+  border-radius: 9999px;
+  transition: background-color var(--transition-base);
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm {
+  width: 2.5rem;
+  height: 1.25rem;
+}
+
+.md {
+  width: 3rem;
+  height: 1.5rem;
+}
+
+.lg {
+  width: 3.5rem;
+  height: 1.75rem;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.sm .thumb {
+  width: 1rem;
+  height: 1rem;
+}
+
+.md .thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.lg .thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Checked State */
+.checked {
+  background-color: var(--color-primary);
+}
+
+.sm.checked .thumb {
+  transform: translateX(1.25rem);
+}
+
+.md.checked .thumb {
+  transform: translateX(1.5rem);
+}
+
+.lg.checked .thumb {
+  transform: translateX(1.75rem);
+}
+
+/* Disabled State */
+.input:disabled ~ .slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input:disabled ~ .textContainer {
+  opacity: 0.5;
+}
+
+/* Focus State */
+.input:focus-visible ~ .slider {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Text */
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.labelText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.description {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
