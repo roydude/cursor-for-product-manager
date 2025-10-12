@@ -4,62 +4,115 @@
  */
 
 export const colors = {
-  // Primary Colors
-  primary: "#00C4B4",
-  primaryHover: "#00A89A",
-  primaryLight: "#E6F9F7",
+  // Brand Colors (from Figma Design Tokens)
+  brand: {
+    primary: "#2CA4FB",
+    primaryHover: "#2497F3",
+    primaryLight: "#F0F9FF",
+    primarySubtle: "#E6F9FF",
+  },
 
-  // Secondary Colors
-  secondary: "#FF6B9D",
-  secondaryHover: "#FF5089",
-  secondaryLight: "#FFE6EF",
+  // Text Colors
+  text: {
+    default: "#333436",
+    strong: "#18191B",
+    subtle: "#838486",
+    subtlest: "#ACAEB0",
+    inverse: "#FFFFFF",
+    brand: "#2497F3",
+  },
+
+  // Background Colors
+  background: {
+    default: "#FFFFFF",
+    alternative: "#F7F7F7",
+    subtle: "#F3F3F7",
+    dimmer: "#18191B9C",
+  },
+
+  // Accent Colors
+  accent: {
+    gray: {
+      subtle: "#F3F3F7",
+      default: "#838486",
+      strong: "#18191B",
+    },
+    skyblue: {
+      subtle: "#F0F9FF",
+    },
+    red: {
+      default: "#F1392C",
+      subtle: "#FFF5F5",
+    },
+    green: {
+      default: "#02C551",
+    },
+  },
+
+  // Icon Colors
+  icon: {
+    default: "#333436",
+    brand: "#2497F3",
+    subtle: "#838486",
+    subtlest: "#ACAEB0",
+    disabled: "#D1D2D4",
+    inverse: "#FFFFFF",
+  },
+
+  // Border Colors
+  border: {
+    default: "#DFE0E2",
+    subtle: "#E9EAEB",
+    strong: "#18191B",
+    inverse: "#FFFFFF",
+  },
 
   // Status Colors
-  success: "#10B981",
-  warning: "#F59E0B",
-  danger: "#EF4444",
-  info: "#3B82F6",
+  status: {
+    error: "#FB4E4E",
+    success: "#41AC4D",
+    warning: "#F59E0B",
+  },
 
-  // Neutral Colors
-  gray50: "#F9FAFB",
-  gray100: "#F3F4F6",
-  gray200: "#E5E7EB",
-  gray300: "#D1D5DB",
-  gray400: "#9CA3AF",
-  gray500: "#6B7280",
-  gray600: "#4B5563",
-  gray700: "#374151",
-  gray800: "#1F2937",
-  gray900: "#111827",
+  // Neutral Fill
+  fill: {
+    neutral: {
+      subtle: {
+        default: "#33343600",
+        hover: "#3334360D",
+      },
+    },
+  },
 
-  // Background & Text
-  background: "#FFFFFF",
-  backgroundAlt: "#F9FAFB",
-  text: "#1F2937",
-  textSecondary: "#6B7280",
-  textLight: "#9CA3AF",
-
-  // Border
-  border: "#E5E7EB",
-  borderLight: "#F3F4F6",
+  // Base Colors
+  white: "#FFFFFF",
+  black: "#000000",
+  jobdaBlack: "#121619",
 } as const;
 
 export const spacing = {
-  xs: "0.25rem", // 4px
-  sm: "0.5rem", // 8px
-  md: "1rem", // 16px
-  lg: "1.5rem", // 24px
-  xl: "2rem", // 32px
-  "2xl": "3rem", // 48px
-  "3xl": "4rem", // 64px
+  0: "0rem", // 0px
+  50: "0.25rem", // 4px
+  75: "0.375rem", // 6px
+  100: "0.5rem", // 8px
+  125: "0.625rem", // 10px
+  150: "0.75rem", // 12px
+  200: "1rem", // 16px
+  250: "1.25rem", // 20px
+  300: "1.5rem", // 24px
+  400: "2rem", // 32px
+  500: "2.5rem", // 40px
+  600: "3rem", // 48px
 } as const;
 
 export const borderRadius = {
-  sm: "0.25rem", // 4px
-  md: "0.5rem", // 8px
-  lg: "0.75rem", // 12px
-  xl: "1rem", // 16px
-  full: "9999px",
+  0: "0rem", // 0px
+  25: "0.125rem", // 2px
+  50: "0.25rem", // 4px
+  75: "0.375rem", // 6px
+  100: "0.5rem", // 8px
+  150: "0.75rem", // 12px
+  circular: "999999px", // Full circle
 } as const;
 
 export const fontSize = {

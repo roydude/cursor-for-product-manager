@@ -1,6 +1,6 @@
 # 메디컬 잡다 프로토타입 (React)
 
-메디컬 잡다 간호사 프로필 관리 페이지의 React 기반 프로토타입입니다.
+메디컬 잡다 서비스의 모든 기능을 구현하는 React 기반 프로토타입 저장소입니다. 프로필 관리, 공고 탐색, 매칭 등 메디컬 잡다의 핵심 기능들을 프로토타입으로 개발 및 검증합니다.
 
 ## 🎯 프로젝트 개요
 
@@ -72,7 +72,17 @@ npm install
 npm run dev
 ```
 
-브라우저에서 자동으로 `http://localhost:3000`이 열립니다.
+브라우저에서 자동으로 `http://localhost:5173`이 열립니다 (Vite 기본 포트).
+
+### 현재 구현된 페이지
+
+- **프로필 관리 페이지** (`/`) - 간호사 프로필 관리 전체 기능
+  - 기본 정보 입력
+  - 간호사 면허 관리
+  - 학력 정보
+  - 경력 관리
+  - 희망 근무조건 설정
+  - 매칭 설정
 
 ### 3. 빌드
 
@@ -92,19 +102,34 @@ npm run preview
 
 ## 🎨 디자인 시스템
 
-### 메디컬 잡다 브랜드 컬러
+### 메디컬 잡다 브랜드 컬러 (Figma Design Tokens 기반)
 
 ```typescript
 colors = {
-  primary: "#00C4B4", // 메디컬 틸
-  secondary: "#FF6B9D", // 핑크
-  success: "#10B981",
-  warning: "#F59E0B",
-  danger: "#EF4444",
+  brand: {
+    primary: "#2CA4FB",      // 메디컬 브랜드 블루
+    primaryHover: "#2497F3", // 호버 상태
+    primaryLight: "#F0F9FF", // 연한 배경
+  },
+  text: {
+    default: "#333436",      // 기본 텍스트
+    strong: "#18191B",       // 강조 텍스트
+    subtle: "#838486",       // 보조 텍스트
+    brand: "#2497F3",        // 브랜드 텍스트
+  },
+  accent: {
+    red: { default: "#F1392C" },
+    green: { default: "#02C551" },
+  },
+  status: {
+    error: "#FB4E4E",
+    success: "#41AC4D",
+    warning: "#F59E0B",
+  },
 };
 ```
 
-디자인 시스템은 `src/styles/theme.ts`에 정의되어 있습니다.
+모든 디자인 토큰은 `src/styles/theme.ts`에 정의되어 있으며, Figma 디자인 시스템과 동기화되어 있습니다.
 
 ## 📦 컴포넌트 라이브러리
 
@@ -311,6 +336,38 @@ export default MyComponent;
 - Vitest (단위 테스트)
 - React Testing Library (컴포넌트 테스트)
 
+## 🎬 빠른 시작 가이드
+
+처음 프로젝트를 클론했다면:
+
+```bash
+# 1. 프로젝트 디렉토리로 이동
+cd cursor-for-product-manager/prototype
+
+# 2. 의존성 설치 (최초 1회)
+npm install
+
+# 3. 개발 서버 실행
+npm run dev
+```
+
+개발 서버가 실행되면 브라우저에서 `http://localhost:5173`을 열어 프로필 관리 페이지를 확인할 수 있습니다.
+
+## 🎨 디자인 시스템 사용법
+
+프로젝트는 Figma 디자인 토큰과 동기화되어 있습니다. 색상을 사용할 때:
+
+```typescript
+import theme from '@styles/theme';
+
+// ✅ 권장
+style={{ color: theme.colors.text.default }}
+style={{ backgroundColor: theme.colors.brand.primary }}
+
+// ❌ 비권장 (하드코딩)
+style={{ color: '#333436' }}
+```
+
 ## 📄 라이선스
 
 이 프로젝트는 메디컬 잡다 내부 프로토타입용입니다.
@@ -323,6 +380,6 @@ export default MyComponent;
 
 ---
 
-**마지막 업데이트**: 2024-10-12  
-**버전**: 1.0.0  
-**상태**: 기본 구조 완성, 추가 컴포넌트 구현 예정
+**마지막 업데이트**: 2025-10-12
+**버전**: 1.1.0  
+**상태**: 프로필 관리 페이지 완성 (Figma 디자인 토큰 적용)
