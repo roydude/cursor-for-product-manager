@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProfileManagementPage from "@pages/ProfileManagementPage";
+import FigmaProfilePage from "./pages/FigmaProfilePage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ProfileManagementPage />} />
+        <Route path="/" element={<FigmaProfilePage />} />
       </Routes>
     </Router>
   );

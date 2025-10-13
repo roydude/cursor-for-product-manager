@@ -1,0 +1,118 @@
+.gnb {
+  width: 100%;
+  height: 64px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E9EAEB;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1920px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 360px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2CA4FB;
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menuItem {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333436;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: color 0.2s;
+}
+
+.menuItem:hover {
+  color: #2CA4FB;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: #333436;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.iconButton:hover {
+  background-color: #F7F7F7;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2CA4FB 0%, #2497F3 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    padding: 0 240px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 40px;
+  }
+  
+  .menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+

@@ -6,6 +6,12 @@
 
 이 프로토타입은 **Vite + React + TypeScript**를 사용하여 구축되었으며, Claude Sonnet 4.5가 효율적으로 작업할 수 있도록 설계되었습니다.
 
+### 🎨 디자인 참조
+
+**공식 Figma 디자인**: [메디컬 잡다 마이페이지 프로필 관리](https://www.figma.com/design/gRqwkHa7LMjLNwuFLe8EZW/-%EB%94%94%EC%9E%90%EC%9D%B8--%EB%A9%94%EB%94%94%EC%BB%AC%EC%9E%A1%EB%8B%A4?node-id=577-6450&t=0n1h2Xw4qdnvWXUP-11)
+
+이 프로토타입은 위 Figma 디자인을 기반으로 구현되었습니다.
+
 ### 핵심 기술 스택
 
 - **React 18.3** - UI 라이브러리
@@ -107,15 +113,15 @@ npm run preview
 ```typescript
 colors = {
   brand: {
-    primary: "#2CA4FB",      // 메디컬 브랜드 블루
+    primary: "#2CA4FB", // 메디컬 브랜드 블루
     primaryHover: "#2497F3", // 호버 상태
     primaryLight: "#F0F9FF", // 연한 배경
   },
   text: {
-    default: "#333436",      // 기본 텍스트
-    strong: "#18191B",       // 강조 텍스트
-    subtle: "#838486",       // 보조 텍스트
-    brand: "#2497F3",        // 브랜드 텍스트
+    default: "#333436", // 기본 텍스트
+    strong: "#18191B", // 강조 텍스트
+    subtle: "#838486", // 보조 텍스트
+    brand: "#2497F3", // 브랜드 텍스트
   },
   accent: {
     red: { default: "#F1392C" },
@@ -380,6 +386,6 @@ style={{ color: '#333436' }}
 
 ---
 
-**마지막 업데이트**: 2025-10-12
-**버전**: 1.1.0  
-**상태**: 프로필 관리 페이지 완성 (Figma 디자인 토큰 적용)
+**마지막 업데이트**: 2025-10-13
+**버전**: 1.2.0  
+**상태**: 프로필 관리 페이지 완성 (Figma 공식 디자인 기반)

@@ -1,0 +1,69 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.category {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.categoryLabel {
+  min-width: 128px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #18191B;
+  margin: 0;
+}
+
+.items {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: white;
+  border: 1px solid #DFE0E2;
+  border-radius: 21px;
+  transition: all 0.2s;
+}
+
+.skillItem:hover {
+  border-color: #2CA4FB;
+  background: #F0F9FF;
+}
+
+.skillName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333436;
+}
+
+.skillLevel {
+  padding: 2px 8px;
+  background: #F0F9FF;
+  color: #2CA4FB;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .category {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .categoryLabel {
+    min-width: unset;
+  }
+}
+

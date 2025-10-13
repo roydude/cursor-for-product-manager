@@ -1,0 +1,87 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.label {
+  min-width: 128px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #18191B;
+  margin: 0;
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.statusArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: #F7F7F7;
+  color: #333436;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 16px;
+}
+
+.statusText {
+  font-size: 16px;
+  color: #333436;
+  font-weight: 500;
+}
+
+.period {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #838486;
+}
+
+.period svg {
+  width: 20px;
+  height: 20px;
+  color: #ACAEB0;
+}
+
+.info {
+  font-size: 14px;
+  color: #838486;
+  margin: 0;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .label {
+    min-width: unset;
+  }
+}
+

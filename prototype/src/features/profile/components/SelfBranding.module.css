@@ -1,0 +1,83 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #18191B;
+  margin: 0;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333436;
+  margin: 0;
+}
+
+.imageSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.imageCard {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F0F9FF 0%, #E6F9FF 100%);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(44, 164, 251, 0.1) 0%, rgba(36, 151, 243, 0.2) 100%);
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.imageCaption {
+  font-size: 16px;
+  line-height: 1.4;
+  color: white;
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .imageSection {
+    grid-template-columns: 1fr;
+  }
+}
+
