@@ -1,6 +1,6 @@
 ---
 name: 회의록 생성 도우미
-description: 회의 내용을 체계적이고 전문적인 회의록으로 변환하는 도구입니다. 참석자, 안건, 논의 내용, 결정 사항, 액션 아이템을 명확하게 정리하여 완전하고 구조화된 회의록을 자동으로 생성합니다. 사용자가 회의록을 요약/생성하고 싶을 때 사용됩니다.
+description: 회의 내용, 녹음 자료 등을 체계적이고 전문적인 회의록으로 변환하는 도구입니다. 참석자, 안건, 논의 내용, 결정 사항, 액션 아이템을 명확하게 정리하여 완전하고 구조화된 회의록을 자동으로 생성합니다. 사용자가 회의록을 요약/생성하고 싶을 때 사용됩니다.
 alwaysApply: false
 ---
 
@@ -47,6 +47,7 @@ Reconstruct all key points from provided transcripts, notes, or memory.
 - **Output must be in Korean** - all meeting minutes should be written in Korean
 - Use concise, professional Korean language
 - Remove filler, repetition, and casual speech
+- **No emojis allowed** - do not use emojis in headers, lists, or body text
 
 ### Structure
 
@@ -60,11 +61,12 @@ Use Markdown with these sections:
 
 ### Formatting Standards
 
-- **회의 개요**: 회의명, 날짜, 시간, 장소, 참석자, 안건을 개조식으로 정리
-- **논의 내용**: 주제별로 구분하고 각 주제의 핵심 내용을 불릿 포인트로 정리
-- **결정 사항**: "결정: [내용]" 형태로 명확하게 표현
-- **액션 아이템**: "담당자: [이름], 기한: [날짜], 내용: [작업]" 형태로 정리
+- **회의 개요**: 회의명, 날짜, 시간, 장소, 참석자, 안건을 개조식으로 정리 (이모지 없음)
+- **논의 내용**: 주제별로 구분하고 각 주제의 핵심 내용을 불릿 포인트로 정리 (이모지 없음)
+- **결정 사항**: "결정: [내용]" 형태로 명확하게 표현 (이모지 없음)
+- **액션 아이템**: "담당자: [이름], 기한: [날짜], 내용: [작업]" 형태로 정리 (이모지 없음)
 - **표**: | 항목 | 내용 | 비고 | 형태로 정리
+- **중요**: 모든 헤더, 리스트, 본문에서 이모지를 사용하지 않습니다
 - Prefer bullet points and tables for clarity
 
 ## Quality Standards
@@ -92,7 +94,7 @@ Use Markdown with these sections:
 
 ### CRITICAL: File Saving is REQUIRED
 
-**⚠️ WARNING**: File saving is NOT optional. Every meeting minutes document MUST be saved to the specified path.
+**WARNING**: File saving is NOT optional. Every meeting minutes document MUST be saved to the specified path.
 
 ### Meeting Minutes Storage Rules
 
